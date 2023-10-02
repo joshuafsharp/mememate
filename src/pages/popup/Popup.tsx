@@ -1,39 +1,59 @@
-import React from "react";
-import logo from "@assets/img/logo.svg";
+import React, { useEffect, useRef } from "react";
 import "@pages/popup/Popup.css";
-import useStorage from "@src/shared/hooks/useStorage";
-import exampleThemeStorage from "@src/shared/storages/exampleThemeStorage";
-import withSuspense from "@src/shared/hoc/withSuspense";
 
-const Popup = () => {
-  const theme = useStorage(exampleThemeStorage);
+import { BookmarkIcon, CloudIcon } from "@heroicons/react/24/outline";
+
+import withSuspense from "@src/shared/hoc/withSuspense";
+import { RichTextEditor } from "./RichTextEditor";
+
+function Popup() {
+  // const save = () => {
+  //   // Save the contents of the WYSIWYG editor to a file
+  //   const content = editorRef.current.getContent();
+  //   // ...
+  // };
+
+  // const upload = () => {
+  //   // Upload the contents of the WYSIWYG editor to a server
+  //   const content = editorRef.current.getContent();
+  //   // ...
+  // };
+
+  // const handleImageClick = (event) => {
+  //   // Create a new text box at the clicked location
+  //   // ...
+  // };
+
+  const onEditorStateChange = (editorState) => {
+    // Update the state with the new editor value
+    // ...
+  };
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p className="text-lime-400">
-          Edit <code>src/pages/popup/Popup.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React!
-        </a>
-        <button
-          style={{
-            color: theme === "light" ? "#fff" : "#000",
-          }}
-          onClick={exampleThemeStorage.toggle}
-        >
-          Toggle theme: [{theme}]
+    <div
+      style={{
+        backgroundImage: `url(https://source.unsplash.com/random)`,
+        width: "100%",
+        height: "22rem",
+      }}
+      className="App"
+      // onClick={handleImageClick}
+    >
+      <div className="flex justify-between fixed bottom-0 h-12 inset-x-0 divide-x">
+        <button className="flex items-center justify-center w-1/2 text-center bg-gray-100 hover:bg-gray-200 text-gray-700 transition-colors">
+          <BookmarkIcon className="h-5 w-5 mr-2" />
+          Save
         </button>
-      </header>
+
+        <button className="flex items-center justify-center w-1/2 text-center bg-gray-100 hover:bg-gray-200 text-gray-700 transition-colors">
+          <CloudIcon className="h-5 w-5 mr-2" />
+          Upload
+        </button>
+      </div>
+
+      <RichTextEditor />
     </div>
   );
-};
+}
 
 export default withSuspense(Popup);
