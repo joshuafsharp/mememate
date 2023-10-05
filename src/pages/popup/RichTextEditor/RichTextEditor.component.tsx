@@ -3,8 +3,7 @@ import { defaultValueCtx, Editor, rootCtx } from "@milkdown/core";
 import { nord } from "@milkdown/theme-nord";
 import { Milkdown, useEditor } from "@milkdown/react";
 import { commonmark } from "@milkdown/preset-commonmark";
-import "./RichTextEditor.module.css";
-import "@milkdown/theme-nord/style.css";
+import "@pages/popup/RichTextEditor/RichTextEditor.css";
 
 export const RichTextEditor: React.FC = () => {
   const { get } = useEditor((root) =>
